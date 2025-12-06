@@ -8,7 +8,7 @@ import {
 
 // --- Constants & Data ---
 
-// PRESERVED: Using local video file version 2
+// PRESERVED: Keeping your local video file
 const VIDEO_SOURCE = "/HiddenSignals2.mp4";
 
 const CASE_STUDIES = [
@@ -79,9 +79,6 @@ const SIGNALS_LIST = [
 // --- Components ---
 
 const Navigation = () => {
-  // Removed state for mobile menu as requested
-  const menuItems = ['The Logic', 'Case Studies', 'Build Cohort', 'Login'];
-
   return (
     <nav className="fixed w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -107,21 +104,6 @@ const Navigation = () => {
             </div>
             <span className="text-2xl font-bold tracking-tighter text-white">Twyn</span>
           </div>
-
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {menuItems.map((item) => (
-                <a key={item} href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">
-                  {item}
-                </a>
-              ))}
-              <button className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-5 py-2 rounded-full font-bold text-sm transition-all shadow-[0_0_15px_rgba(6,182,212,0.5)]">
-                Start Simulation
-              </button>
-            </div>
-          </div>
-
-          {/* Removed Hamburger Mobile Menu */}
         </div>
       </div>
     </nav>
@@ -152,13 +134,10 @@ const HeroSection = () => {
               You have a profile of your ideal buyer. We have a synthetic simulation of all 330 million Americans. Twyn matches them to find your "Hidden Market"—the people who look, act, and buy exactly like your best customers.
             </p>
 
-            {/* UPDATED BUTTON STRATEGY: Reverted to previous preferred layout */}
+            {/* UPDATED BUTTON STRATEGY: Single Clear CTA - As requested in new code */}
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <a href="#the-logic" className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)]">
                 Get Started <ChevronRight size={20} />
-              </a>
-              <a href="#build-cohort" className="flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-lg text-white border border-white/20 hover:bg-white/5 transition-all">
-                Find Your Twyns Now
               </a>
             </div>
           </div>
@@ -372,7 +351,7 @@ const SignalBuilder = () => {
               {/* PRESERVED: Visual Placeholder using TwynPopFound.png */}
               <div className="flex-1 relative flex items-center justify-center bg-slate-900/50 rounded-lg border-2 border-dashed border-slate-800 overflow-hidden mb-6 mx-4">
 
-                {/* Image Content */}
+                {/* Image Content - Using local image instead of Icon placeholder */}
                 <div className="absolute inset-0 z-0">
                   <img
                     src="/TwynPopFound.png"
