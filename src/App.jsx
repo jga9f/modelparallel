@@ -8,36 +8,54 @@ import {
 
 // --- Constants & Data ---
 
-// UPDATED: Use the local video file version 2
+// PRESERVED: Using local video file version 2
 const VIDEO_SOURCE = "/HiddenSignals2.mp4";
 
 const CASE_STUDIES = [
   {
     id: 1,
-    type: "Retail Expansion",
-    title: "The Chili Alley Discovery",
-    metric: "+40% Conversion",
-    challenge: "Brand wanted 'Spicy Food Lovers' but census data was too generic.",
-    solution: "Identified correlation between [Walkable Streets] + [High Scoville Diet]. Found a hidden market corridor the census missed.",
+    type: "Retail Strategy",
+    title: "The Hidden Chili Alley",
+    metric: "New Market",
+    challenge: "A major food co. planned 2026 ad spend in a known 'Chili Alley' but was blind to identical markets hiding in plain sight.",
+    solution: "We found a 'Hidden Chili Alley' in Boston by overlaying grocery store maps. Enabled a targeted in-store marketing campaign.",
     tags: ["Retail", "Geo-Spatial"]
   },
   {
     id: 2,
-    type: "Insurance Risk",
-    title: "The Invisible Fire Risk",
-    metric: "$12M Saved",
-    challenge: "Insurer used 'Age of Home' to predict fires. Missing 70% of claims.",
-    solution: "Added 'Space Heater' hidden signal. The risk map changed instantly, identifying high-risk homes regardless of age.",
-    tags: ["Insurance", "Risk"]
+    type: "Pharma Logistics",
+    title: "The HIPAA Barrier",
+    metric: "Service Expanded",
+    challenge: "Delivery service knew what was bought, but due to privacy/HIPAA, they didn't collect data on 'who' the customers were.",
+    solution: "We overlaid purchase data to reveal the 'Hidden Signal' variables of current buyers, then found underserved lookalike areas to expand service.",
+    tags: ["Pharma", "Privacy"]
   },
   {
     id: 3,
-    type: "Political Polling",
-    title: "The Silent Voter",
-    metric: "98% Accuracy",
-    challenge: "Traditional polling missed conservative voters in urban centers.",
-    solution: "Simulated 'Privacy-Conscious' signal + 'Commute Time', revealing a massive silent voting block.",
-    tags: ["Political", "Behavioral"]
+    type: "Public Health",
+    title: "The Origin Story: Lead",
+    metric: "70% Risk Missed",
+    challenge: "Standard data assumes [Many Kids] + [Many Old Homes] = Risk. This 'Naïve' approach ignores if kids actually *live* in those homes.",
+    solution: "Twyn modeled the joint probability of Kids *living in* Old Homes. We proved the naïve approach missed 70% of high-risk children.",
+    tags: ["Origin Story", "Public Health"]
+  },
+  {
+    id: 4,
+    type: "Insurance Risk",
+    title: "The Probability Trap",
+    metric: "+40% Accuracy",
+    challenge: "Insurer targeting anti-smoking campaigns used 'Naïve' census data, missing the true intersection of risk factors.",
+    solution: "Twyn calculated joint probabilities of risk at the individual level. We found the status quo missed 40% of true high-risk census tracts.",
+    tags: ["Insurance", "Predictive"]
+  },
+  {
+    id: 5,
+    type: "Hardware Sales",
+    title: "The Resolution Gap",
+    metric: "Granular Risk",
+    challenge: "A smoke alarm giant needed to identify fire risk, but standard housing data lacked the necessary spatial resolution.",
+    solution: "We brought in individual housing risk factors—specifically Space Heater usage—to pinpoint high-risk homes the spatial data missed.",
+    tags: ["Hardware", "Risk"]
   }
 ];
 
@@ -61,9 +79,7 @@ const SIGNALS_LIST = [
 // --- Components ---
 
 const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  // UPDATED MENU ITEMS
+  // Removed state for mobile menu as requested
   const menuItems = ['The Logic', 'Case Studies', 'Build Cohort', 'Login'];
 
   return (
@@ -105,25 +121,9 @@ const Navigation = () => {
             </div>
           </div>
 
-          <div className="-mr-2 flex md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-slate-300 hover:text-white p-2">
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          {/* Removed Hamburger Mobile Menu */}
         </div>
       </div>
-
-      {isOpen && (
-        <div className="md:hidden bg-slate-900 border-b border-white/10">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {menuItems.map((item) => (
-              <a key={item} href={`#${item.toLowerCase().replace(" ", "-")}`} className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">
-                {item}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
@@ -152,6 +152,7 @@ const HeroSection = () => {
               You have a profile of your ideal buyer. We have a synthetic simulation of all 330 million Americans. Twyn matches them to find your "Hidden Market"—the people who look, act, and buy exactly like your best customers.
             </p>
 
+            {/* UPDATED BUTTON STRATEGY: Reverted to previous preferred layout */}
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <a href="#the-logic" className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)]">
                 Get Started <ChevronRight size={20} />
@@ -245,9 +246,9 @@ const SolutionsSection = () => {
             number={2}
             title="The Lookalike"
             icon={Users}
-            problem="You are wasting ad spend on the wrong half of the zip code."
-            solution="We feed that 'Hidden Signal' profile into our US simulation, ignoring zip code averages."
-            result="We find 50,000 'Twyns' of your best customer in markets you haven't even touched yet."
+            problem="You want to know where you should ad spend."
+            solution="We feed that 'Hidden Signal' profile into our US simulation."
+            result="We find 'Twyns' of your best customer in markets you haven't even touched yet."
           />
           <FeatureCard
             number={3}
@@ -255,7 +256,7 @@ const SolutionsSection = () => {
             icon={Map}
             problem="'We're crushing it in Boston. Should we go to Austin or Nashville?'"
             solution="Don't guess. We calculate the density of 'Twyns' in every city in America."
-            result="Data proves Nashville has 40% more of your specific customers than Austin, even if cities look same on paper."
+            result="The data proves Nashville has significantly higher density of your specific customers than Austin, even if cities look same on paper."
           />
         </div>
       </div>
@@ -311,8 +312,8 @@ const SignalBuilder = () => {
                       key={signal.id}
                       onClick={() => toggleSignal(signal.id)}
                       className={`flex items-center gap-3 p-3 rounded transition-all text-sm font-medium border text-left ${signals.includes(signal.id)
-                          ? 'bg-cyan-500/20 border-cyan-500 text-cyan-400'
-                          : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-transparent hover:border-slate-600'
+                        ? 'bg-cyan-500/20 border-cyan-500 text-cyan-400'
+                        : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-transparent hover:border-slate-600'
                         }`}
                     >
                       {signals.includes(signal.id) ? (
@@ -341,8 +342,8 @@ const SignalBuilder = () => {
                       key={r}
                       onClick={() => setRegion(r)}
                       className={`py-2 px-3 rounded text-sm font-bold transition-all border ${region === r
-                          ? 'bg-amber-500 text-slate-900 border-amber-500'
-                          : 'bg-slate-900 text-slate-400 border-slate-700 hover:border-slate-500'
+                        ? 'bg-amber-500 text-slate-900 border-amber-500'
+                        : 'bg-slate-900 text-slate-400 border-slate-700 hover:border-slate-500'
                         }`}
                     >
                       {r === 'US' ? 'National' : r}
@@ -368,7 +369,7 @@ const SignalBuilder = () => {
                 <div className="text-cyan-400 text-sm font-bold mt-2">Identified in Market</div>
               </div>
 
-              {/* UPDATED: Visual Placeholder using TwynPopFound.png */}
+              {/* PRESERVED: Visual Placeholder using TwynPopFound.png */}
               <div className="flex-1 relative flex items-center justify-center bg-slate-900/50 rounded-lg border-2 border-dashed border-slate-800 overflow-hidden mb-6 mx-4">
 
                 {/* Image Content */}
@@ -378,11 +379,6 @@ const SignalBuilder = () => {
                     alt="Twyn Population Found Map"
                     className="w-full h-full object-contain opacity-80"
                   />
-                </div>
-
-                {/* Fallback/Overlay if image fails or needs accent */}
-                <div className="relative z-10 text-center pointer-events-none mix-blend-overlay">
-                  {/* The image should do the heavy lifting, this is just insurance */}
                 </div>
 
                 {/* Subtle Grid Pattern Overlay */}
@@ -446,7 +442,9 @@ const TrustBar = () => {
     <div className="py-20 bg-slate-950 border-t border-white/10">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <Shield className="mx-auto text-cyan-500 mb-6" size={48} />
-        <h2 className="text-3xl font-bold text-white mb-6">Infinite Precision. Zero Invasion.</h2>
+
+        {/* UPDATED HEADLINE: Stronger Privacy Hook */}
+        <h2 className="text-3xl font-bold text-white mb-6">Infinite Precision. Zero PII.</h2>
 
         {/* HARVARD KICKER - INTEGRATED HERE */}
         <div className="inline-block px-4 py-3 bg-cyan-950/20 rounded-lg border border-cyan-500/20 mb-8 max-w-2xl relative">
@@ -455,9 +453,9 @@ const TrustBar = () => {
           </p>
         </div>
 
+        {/* UPDATED COPY: "Insight without the invasion" */}
         <p className="text-xl text-slate-400 mb-8 leading-relaxed">
-          How do we know so much about these people? <span className="text-white font-bold">We don't.</span> <br />
-          Twyn is built on Synthetic Data. These agents are statistically identical to real people but they do not exist.
+          Our agents are synthetic simulations—statistically identical to your customers, but born from code, not surveillance. You get the insight without the invasion.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
@@ -480,7 +478,7 @@ const Footer = () => {
           Your next 100,000 customers are <br /> hiding in plain sight.
         </h2>
         <button className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-10 py-5 rounded-full font-bold text-xl transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] mb-16">
-          Find Their Twyns
+          Find the Twyns
         </button>
 
         <div className="flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm border-t border-white/5 pt-8">
