@@ -243,6 +243,76 @@ const LogicSection = () => {
   );
 };
 
+const ArchitectsSection = () => {
+  const architects = [
+    {
+      name: "Joseph Allen, DSc",
+      title: "CEO",
+      education: "Professor, Harvard University | DSc (Doctor of Science, Boston University)",
+      bio: "A global authority on population health and trusted advisor to senior executives at JPMorgan Chase and Amazon. He is the author of the award-winning book Healthy Buildings and a frequent contributor to the Harvard Business Review, The New York Times, and The Washington Post. He is the co-inventor of the Parallel synthetic population architecture, originally built in his Harvard lab.",
+      image: "/joseph_allen.jpg"
+    },
+    {
+      name: "Shivani Cott, PhD",
+      title: "Chief Innovation Officer",
+      education: "PhD, Harvard University",
+      bio: "The co-inventor of the Parallel architecture. Her doctoral research at Harvard focused on quantifying invisible population vectors in complex systems using machine learning. She leads the research engine, ensuring our synthetic agents behave with the same biological and behavioral complexity as real populations.",
+      image: "/shivani_cott.jpg"
+    },
+    {
+      name: "Lauren Ferguson, PhD",
+      title: "Chief Simulation Engineer",
+      education: "PhD, University College London (UCL) | Postdoctoral Fellow, Harvard",
+      bio: "An expert at the intersection of synthetic populations and building physics. Uniquely qualified in modeling the physical structures people inhabit, she powers Parallel’s granular housing insights. At Harvard, she co-developed the core synthetic population technology, and previously modeled environmental exposure for 1.3 million individuals in Greater London. She translates the chaotic physics of the real world into the structured precision of Parallel code.",
+      image: "/lauren_ferguson.jpg"
+    },
+    {
+      name: "Emily Jones, PhD",
+      title: "Chief Science Officer",
+      education: "BA, UC Berkeley | MS, Princeton | PhD, Harvard",
+      bio: "The Chief Science Officer at Parallel’s parent company, 9 Foundations. She serves as the bridge between academic rigor, advanced analytics, and market reality. With a \"Triple Crown\" academic background, she ensures technical excellence for data science tools deployed for global Fortune 10 companies.",
+      image: "/emily_jones.png"
+    }
+  ];
+
+  return (
+    <div className="py-24 bg-slate-950 border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">The <span className="text-teal-400">Architects</span></h2>
+          <p className="text-slate-400 max-w-3xl mx-auto text-lg">
+            Combined 60+ years of research and 100+ peer-reviewed publications. We didn't just wrap an API; we engineered the standard.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12">
+          {architects.map((person, index) => (
+            <div key={index} className="flex flex-col md:flex-row gap-6 items-start bg-slate-900/50 p-6 rounded-xl border border-white/5 hover:border-indigo-500/30 transition-all">
+              <div className="w-24 h-24 md:w-32 md:h-32 flex-shrink-0 rounded-full overflow-hidden border-2 border-indigo-500/20">
+                <img
+                  src={person.image}
+                  alt={person.name}
+                  className="w-full h-full object-cover grayscale contrast-125"
+                />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">{person.name}</h3>
+                <div className="text-slate-300 font-medium mb-2">{person.title}</div>
+                <div className="text-sm text-teal-400 italic mb-4 font-medium border-l-2 border-teal-500/30 pl-3">
+                  {person.education}
+                </div>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  {person.bio}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const SignalBuilder = () => {
   const [signals, setSignals] = useState(['Core Census']);
   const [region, setRegion] = useState('US');
@@ -441,6 +511,7 @@ const App = () => {
       <HeroSection />
       <TrustAnchor />
       <LogicSection />
+      <ArchitectsSection />
       <SignalBuilder />
       <GridCaseStudies />
       <Footer />
