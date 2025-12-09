@@ -297,7 +297,6 @@ const ArchitectsSection = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">{person.name}</h3>
-                <div className="text-slate-300 font-medium mb-2">{person.title}</div>
                 <div className="text-sm text-teal-400 italic mb-4 font-medium border-l-2 border-teal-500/30 pl-3">
                   {person.education}
                 </div>
