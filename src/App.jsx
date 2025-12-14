@@ -56,6 +56,15 @@ const CASE_STUDIES = [
     challenge: "A smoke alarm giant needed to identify fire risk, but standard housing data lacked the necessary spatial resolution.",
     solution: "We brought in individual housing risk factors—specifically Space Heater usage—to pinpoint high-risk homes the spatial data missed.",
     tags: ["Hardware", "Risk"]
+  },
+  {
+    id: 6,
+    type: "Energy Optimization",
+    title: "Grid Load Forecasting",
+    metric: "Peak Precision",
+    challenge: "Utility providers struggled to predict EV charging loads at the block level using standard consumption averages.",
+    solution: "Twin simulated individual EV ownership probability and charging behaviors, enabling precise transformer load management.",
+    tags: ["Energy", "Infrastructure"]
   }
 ];
 
@@ -86,12 +95,12 @@ const Navigation = () => {
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 relative overflow-hidden rounded">
               <img
-                src="/parallel_icon.jpg"
-                alt="Parallel Logo"
+                src="/Twin logo.jpg"
+                alt="Twin Logo"
                 className="object-contain h-full w-full"
               />
             </div>
-            <span className="text-2xl font-bold tracking-tighter text-white">PARALLEL</span>
+            <span className="text-2xl font-bold tracking-tighter text-white">TWIN</span>
           </div>
         </div>
       </div>
@@ -313,16 +322,28 @@ const ArchitectsSection = () => {
 };
 
 const SignalBuilder = () => {
-  const [signals, setSignals] = useState(['Core Census']);
-  const [region, setRegion] = useState('US');
+  const [region, setRegion] = useState('National');
+  const [selectedPack, setSelectedPack] = useState('Insurance');
 
-  const toggleSignal = (signalId) => {
-    if (signals.includes(signalId)) {
-      setSignals(signals.filter(s => s !== signalId));
-    } else {
-      setSignals([...signals, signalId]);
-    }
+  // State for base variables to allow toggling (defaulting all to true for "included" feel, or false? 
+  // User said "let the user select... as many or few". I will default to all selected to match "included" vibe, or maybe just a few.
+  // Let's use simple arrays for selection state for simplicity in this demo.
+  const [baseDemo, setBaseDemo] = useState(['Age', 'Gender', 'Race/Ethnicity', 'Income']);
+  const [baseHousing, setBaseHousing] = useState(['Type', 'Age of Home', 'Tenure']);
+  const [insuranceVars, setInsuranceVars] = useState(['Health (Private, Medicare, Medicaid)', 'Fire Insurance', 'Flood Insurance']);
+
+  const toggleItem = (list, setList, item) => {
+    if (list.includes(item)) setList(list.filter(i => i !== item));
+    else setList([...list, item]);
   };
+
+  const VARIABLE_PACKS = [
+    { id: 'Insurance', name: 'Insurance', icon: Shield },
+    { id: 'Energy', name: 'Energy', icon: Zap },
+    { id: 'Family', name: 'Family & Life', icon: Users },
+    { id: 'Work', name: 'Work & Transit', icon: Briefcase },
+    { id: 'Building', name: 'Building & Appliances', icon: Building2 }
+  ];
 
   return (
     <div className="py-24 bg-slate-900 border-y border-white/5" id="build-cohort">
@@ -331,80 +352,146 @@ const SignalBuilder = () => {
 
           {/* LEFT SIDE: BUILDER CONTROLS */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Precision <span className="text-sky-400">Interface.</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Precision <span className="text-sky-400">Targeting.</span></h2>
             <p className="text-slate-400 text-lg mb-8">
-              Select hidden signals to sharpen your view, then choose your target geography.
+              Choose your target geography. Then select hidden signals to sharpen your view.
             </p>
 
-            <div className="space-y-6">
-              {/* CORE PARALLEL BLOCK */}
-              <div className="flex items-center justify-between bg-slate-800/50 p-4 rounded-lg border border-white/10">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded bg-slate-700 flex items-center justify-center text-slate-400">
-                    <Users size={20} />
+            <div className="space-y-8">
+
+              {/* 1. GEOGRAPHY BLOCK */}
+              <div className="space-y-3">
+                <div className="text-sm text-sky-500 uppercase tracking-wider font-bold font-mono"> // 1. SELECT GEOGRAPHY</div>
+                <div className="p-5 rounded-lg border border-slate-700 bg-slate-800/30">
+                  <div className="grid grid-cols-3 gap-3">
+                    {['State', 'Region', 'National'].map((r) => (
+                      <button
+                        key={r}
+                        onClick={() => setRegion(r)}
+                        className={`py-2 px-3 rounded text-sm font-bold transition-all border ${region === r
+                          ? 'bg-sky-500 text-slate-900 border-sky-500'
+                          : 'bg-slate-900 text-slate-400 border-slate-700 hover:border-slate-500'
+                          }`}
+                      >
+                        {r}
+                      </button>
+                    ))}
                   </div>
+                </div>
+              </div>
+
+              {/* 2. BASE VARIABLES BLOCK */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-indigo-500 uppercase tracking-wider font-bold font-mono"> // 2. SELECT BASE VARIABLES</div>
+                  <div className="text-indigo-400 text-[10px] font-bold bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">INCLUDED</div>
+                </div>
+
+                <div className="bg-slate-800/50 p-5 rounded-lg border border-white/10 space-y-6">
+                  {/* Demographics */}
                   <div>
-                    <div className="text-white font-bold">The Core Parallel</div>
-                    <div className="text-xs text-slate-400">Age, Gender, Race/Ethnicity, Income, Education</div>
+                    <div className="flex items-center gap-2 mb-3 text-white font-bold text-sm">
+                      <Users size={16} className="text-slate-400" /> Demographics
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {['Age', 'Gender', 'Race/Ethnicity', 'Income'].map(item => (
+                        <button
+                          key={item}
+                          onClick={() => toggleItem(baseDemo, setBaseDemo, item)}
+                          className={`px-3 py-1.5 rounded text-xs font-bold border transition-all ${baseDemo.includes(item)
+                            ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
+                            : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
+                            }`}
+                        >
+                          {item}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Housing Characteristics */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-3 text-white font-bold text-sm">
+                      <Home size={16} className="text-slate-400" /> Housing Characteristics
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {['Type', 'Age of Home', 'Tenure'].map(item => (
+                        <button
+                          key={item}
+                          onClick={() => toggleItem(baseHousing, setBaseHousing, item)}
+                          className={`px-3 py-1.5 rounded text-xs font-bold border transition-all ${baseHousing.includes(item)
+                            ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
+                            : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
+                            }`}
+                        >
+                          {item}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <div className="text-indigo-400 text-sm font-bold">INCLUDED</div>
               </div>
 
-              {/* HIDDEN SIGNALS BLOCK */}
-              <div className="p-5 rounded-lg border border-dashed border-slate-600 bg-slate-950/50">
-                <div className="text-sm text-indigo-500 mb-4 uppercase tracking-wider font-bold font-mono"> // ADD HIDDEN SIGNALS</div>
-                <div className="grid grid-cols-2 gap-3 mb-4">
-                  {SIGNALS_LIST.map((signal) => (
-                    <button
-                      key={signal.id}
-                      onClick={() => toggleSignal(signal.id)}
-                      className={`flex items-center gap-3 p-3 rounded transition-all text-sm font-medium border text-left ${signals.includes(signal.id)
-                        ? 'bg-indigo-500/20 border-indigo-500 text-indigo-400'
-                        : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-transparent hover:border-slate-600'
-                        }`}
-                    >
-                      {signals.includes(signal.id) ? (
-                        <CheckCircle2 size={18} className="flex-shrink-0 text-indigo-400" />
-                      ) : (
-                        <div className="w-[18px] h-[18px] rounded-full border border-slate-500 flex-shrink-0" />
-                      )}
-                      <span className="truncate">{signal.name}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
+              {/* 3. TARGET VARIABLE PACKS */}
+              <div className="space-y-3">
+                <div className="text-sm text-sky-500 uppercase tracking-wider font-bold font-mono"> // 3. SELECT TARGET VARIABLES</div>
+                <div className="p-5 rounded-lg border border-dashed border-slate-600 bg-slate-950/50">
+                  <div className="grid grid-cols-1 gap-3">
+                    {VARIABLE_PACKS.map((pack) => (
+                      <div key={pack.id} className="w-full">
+                        <button
+                          onClick={() => setSelectedPack(selectedPack === pack.id ? null : pack.id)}
+                          className={`w-full flex items-center justify-between p-4 rounded-lg border transition-all ${selectedPack === pack.id
+                            ? 'bg-slate-800 border-indigo-500'
+                            : 'bg-slate-900 border-slate-700 hover:border-slate-600'
+                            }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className={`p-2 rounded ${selectedPack === pack.id ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-800 text-slate-500'}`}>
+                              {pack.icon && <pack.icon size={18} />}
+                            </div>
+                            <span className={`font-bold ${selectedPack === pack.id ? 'text-white' : 'text-slate-300'}`}>{pack.name}</span>
+                          </div>
+                          <ChevronDown size={18} className={`transition-transform ${selectedPack === pack.id ? 'rotate-180 text-indigo-400' : 'text-slate-600'}`} />
+                        </button>
 
-              {/* GEOGRAPHY BLOCK */}
-              <div className="p-5 rounded-lg border border-slate-700 bg-slate-800/30">
-                <div className="text-sm text-sky-500 mb-4 uppercase tracking-wider font-bold font-mono"> // SELECT REGION</div>
-                <div className="grid grid-cols-3 gap-3">
-                  {['US', 'State', 'DMA'].map((r) => (
-                    <button
-                      key={r}
-                      onClick={() => setRegion(r)}
-                      className={`py-2 px-3 rounded text-sm font-bold transition-all border ${region === r
-                        ? 'bg-sky-500 text-slate-900 border-sky-500'
-                        : 'bg-slate-900 text-slate-400 border-slate-700 hover:border-slate-500'
-                        }`}
-                    >
-                      {r === 'US' ? 'National' : r}
-                    </button>
-                  ))}
+                        {/* EXPANDED CONTENT (Sub-variables as Buttons) */}
+                        {selectedPack === pack.id && pack.id === 'Insurance' && (
+                          <div className="mt-2 ml-2 pl-4 border-l-2 border-indigo-500/20 py-2 space-y-2">
+                            <div className="flex flex-wrap gap-2">
+                              {['Health (Private, Medicare, Medicaid)', 'Fire Insurance', 'Flood Insurance'].map(sub => (
+                                <button
+                                  key={sub}
+                                  onClick={() => toggleItem(insuranceVars, setInsuranceVars, sub)}
+                                  className={`flex items-center gap-2 px-3 py-2 rounded text-xs font-bold border transition-all w-full md:w-auto ${insuranceVars.includes(sub)
+                                    ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
+                                    : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-600'
+                                    }`}
+                                >
+                                  {insuranceVars.includes(sub) ? <CheckCircle2 size={14} className="text-indigo-400" /> : <div className="w-3.5 h-3.5 rounded-full border border-slate-600"></div>}
+                                  {sub}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
             </div>
           </div>
 
-          {/* RIGHT SIDE: VISUALIZATION (STATIC RESULT) */}
+          {/* RIGHT SIDE: VISUALIZATION */}
           <div className="mt-12 lg:mt-0 relative sticky top-24">
-            <div className="bg-slate-950 rounded-2xl border border-slate-800 p-8 shadow-2xl relative overflow-hidden h-[600px] flex flex-col">
+            <div className="bg-slate-950 rounded-2xl border border-slate-800 p-8 shadow-2xl relative overflow-hidden h-[800px] flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 to-transparent pointer-events-none"></div>
 
               {/* STATIC Stats Header */}
               <div className="flex flex-col items-center justify-center text-center mb-8 relative z-10 pt-4">
-                <div className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-2">Total Parallel Population</div>
+                <div className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-2">Total Twin Population</div>
                 <div className="text-5xl lg:text-6xl font-mono font-bold text-white tracking-tighter">
                   2,368,347
                 </div>
@@ -435,30 +522,50 @@ const GridCaseStudies = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-white mb-4">Strategic <span className="text-sky-400">Impact</span></h2>
-          <p className="text-slate-400">Validated results from the Parallel engine.</p>
+          <p className="text-slate-400">Validated results from the Twin engine.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {CASE_STUDIES.map((study) => (
-            <div key={study.id} className="bg-slate-900 rounded-xl border border-slate-800 p-6 hover:border-indigo-500/30 transition-all group flex flex-col h-full">
-              <div className="mb-6">
+            <div key={study.id} className="bg-slate-900 rounded-xl border border-slate-800 p-6 hover:border-indigo-500/30 transition-all group relative overflow-hidden h-96 flex flex-col">
+
+              {/* DEFAULT CONTENT */}
+              <div className="mb-6 flex-grow transition-all duration-300 group-hover:opacity-10 group-hover:blur-sm">
                 <div className="inline-block px-2 py-1 rounded bg-slate-950 border border-slate-700 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3">
                   {study.type}
                 </div>
                 <div className="text-3xl font-bold text-sky-400 font-mono tracking-tight mb-1">{study.metric}</div>
-                <h3 className="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">{study.title}</h3>
+                <h3 className="text-lg font-bold text-white mb-4">{study.title}</h3>
+
+                <div className="space-y-4">
+                  <div>
+                    <div className="text-xs text-slate-500 font-bold uppercase mb-1">Challenge</div>
+                    <p className="text-slate-400 text-sm leading-relaxed line-clamp-3">{study.challenge}</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="space-y-4 mb-6 flex-grow">
-                <div>
-                  <div className="text-xs text-slate-500 font-bold uppercase mb-1">Challenge</div>
-                  <p className="text-slate-400 text-sm leading-relaxed">{study.challenge}</p>
+              {/* HOVER OVERLAY */}
+              <div className="absolute inset-0 bg-slate-950/95 flex flex-col p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 z-10">
+                <div className="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-2">Deep Dive: {study.type}</div>
+                <p className="text-slate-300 text-sm mb-4">
+                  Advanced analysis of {study.type.toLowerCase()} scenarios revealed hidden correlations in vector space. Twin's engine simulated 40,000 iterations to optimize outcomes.
+                </p>
+
+                {/* Visual Placeholder */}
+                <div className="flex-grow bg-slate-900 rounded border border-dashed border-slate-700 flex items-center justify-center mb-4 relative overflow-hidden group/visual">
+                  <div className="text-slate-500 text-xs text-center px-4">
+                    [ Visual: {study.type} Graph/Heatmap ]
+                  </div>
+                  {/* Subtle grid pattern background */}
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:8px_8px]"></div>
                 </div>
-                <div>
-                  <div className="text-xs text-indigo-400 font-bold uppercase mb-1">Parallel Solution</div>
-                  <p className="text-slate-300 text-sm leading-relaxed">{study.solution}</p>
-                </div>
+
+                <button className="text-white text-sm font-bold flex items-center gap-2 group-hover/btn:gap-3 transition-all">
+                  View Case Study <ChevronRight size={16} className="text-indigo-500" />
+                </button>
               </div>
+
             </div>
           ))}
         </div>
@@ -483,12 +590,15 @@ const Footer = () => {
           <div className="flex items-center gap-2 mb-4 md:mb-0">
             <div className="w-6 h-6 relative opacity-70">
               <img
-                src="/parallel_icon.jpg"
+                src="/Twin logo.jpg"
                 alt="Parallel"
                 className="object-contain h-full w-full"
               />
             </div>
-            <span>© 2025 Parallel Data Inc. All rights reserved.</span>
+            <div className="flex flex-col items-start gap-1">
+              <span className="font-semibold text-white">© 2025 9 Foundations, Inc.</span>
+              <span className="text-xs text-slate-600">Protected by U.S. and International Patents.</span>
+            </div>
           </div>
           <div className="flex gap-6">
             <a href="#" className="hover:text-indigo-400">Privacy Policy</a>
