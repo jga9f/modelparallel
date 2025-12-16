@@ -157,13 +157,13 @@ const TrustAnchor = () => {
   );
 };
 
-const FeatureCard = ({ number, title, problem, solution, result, icon: Icon }) => (
+const FeatureCard = ({ number, title, label, problem, solution, result, icon: Icon }) => (
   <div className="bg-slate-900 rounded-2xl p-8 border border-white/5 hover:border-indigo-500/30 transition-all group relative overflow-hidden h-full">
     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
       <Icon size={120} />
     </div>
     <div className="relative z-10">
-      <div className="text-indigo-500 font-mono text-sm mb-4">0{number} // {title.toUpperCase()}</div>
+      <div className="text-indigo-500 font-mono text-sm mb-4">0{number} // {(label || title).toUpperCase()}</div>
       <h3 className="text-xl font-bold text-white mb-6 group-hover:text-sky-400 transition-colors">
         {title}
       </h3>
@@ -238,6 +238,7 @@ const LogicSection = () => {
             />
             <FeatureCard
               number={4}
+              label="Know Your Customers Better"
               title="Know your customers in a way that wasn't possible before"
               icon={Database}
               problem="Know them without tracking them."
