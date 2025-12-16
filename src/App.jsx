@@ -5,7 +5,7 @@ import {
   Zap, Lock, Menu, X, CheckCircle2, Globe, Building2,
   MapPin, Car, Wifi, Wallet, Heart, Briefcase, GraduationCap,
   Plane, Smartphone, Leaf, ChevronDown, Radio, Home, Key, Clock, Languages, Image as ImageIcon,
-  AlertTriangle, Database, Store, CloudRain, Train, AlertOctagon, Activity
+  AlertTriangle, Database, Store, CloudRain, Train, AlertOctagon, Activity, Flame
 } from 'lucide-react';
 
 // --- Constants & Data ---
@@ -349,8 +349,7 @@ const SignalBuilder = () => {
     { id: 'Weather', name: 'Weather Patterns', icon: CloudRain },
     { id: 'Transit', name: 'Transit Access', icon: Train },
     { id: 'Crime', name: 'Crime Risk', icon: AlertOctagon },
-    { id: 'POI', name: 'Points of Interest', icon: MapPin },
-    { id: 'Footfall', name: 'Digital Footfall', icon: Activity }
+    { id: 'Environment', name: 'Environmental Risk', icon: Flame }
   ];
 
   const [selectedSpatialPack, setSelectedSpatialPack] = useState('Retail');
@@ -515,10 +514,30 @@ const SignalBuilder = () => {
                           </button>
 
                           {/* EXPANDED CONTENT */}
-                          {selectedSpatialPack === pack.id && pack.id === 'Retail' && (
+                          {(selectedSpatialPack === pack.id && pack.id === 'Retail') && (
                             <div className="mt-2 ml-2 pl-4 border-l-2 border-emerald-500/20 py-2 space-y-2">
                               <div className="flex flex-wrap gap-2">
                                 {['Hardware Stores', 'Grocery Stores', 'Pharmacies', 'QSR'].map(sub => (
+                                  <button
+                                    key={sub}
+                                    onClick={() => toggleItem(spatialVars, setSpatialVars, sub)}
+                                    className={`flex items-center gap-2 px-3 py-2 rounded-md text-xs font-bold border shadow-sm transition-all w-full md:w-auto ${spatialVars.includes(sub)
+                                      ? 'bg-emerald-600 border-emerald-500 text-white shadow-emerald-500/20'
+                                      : 'bg-slate-800 border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500'
+                                      } `}
+                                  >
+                                    {spatialVars.includes(sub) ? <CheckCircle2 size={14} className="text-emerald-400" /> : <div className="w-3.5 h-3.5 rounded-full border border-slate-600"></div>}
+                                    {sub}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {(selectedSpatialPack === pack.id && pack.id === 'Environment') && (
+                            <div className="mt-2 ml-2 pl-4 border-l-2 border-emerald-500/20 py-2 space-y-2">
+                              <div className="flex flex-wrap gap-2">
+                                {['Flood Zones (FEMA)', 'Fire Severity', 'Urban Heat Islands', 'Air Quality Index'].map(sub => (
                                   <button
                                     key={sub}
                                     onClick={() => toggleItem(spatialVars, setSpatialVars, sub)}
