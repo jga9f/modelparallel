@@ -11,7 +11,7 @@ import {
 // --- Constants & Data ---
 
 // Rebrand: Swapped Video for Map Screenshot
-const HERO_VISUAL = "/TwynPopFound.png";
+const HERO_VISUAL = "/Twin1.png";
 
 const CASE_STUDIES = [
   {
@@ -582,7 +582,7 @@ const SignalBuilder = () => {
               {/* VISUAL IMAGE PLACEHOLDER */}
               <div className="flex-1 relative flex items-center justify-center bg-slate-900/50 rounded-lg border-2 border-dashed border-slate-800 overflow-hidden mb-6 mx-4">
                 <img
-                  src="/TwynPopFound.png"
+                  src="/Twin2.png"
                   alt="Population Map"
                   className="w-full h-full object-contain opacity-80"
                 />
