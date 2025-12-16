@@ -125,8 +125,8 @@ const HeroSection = () => {
               Synthetic Population Intelligence
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-6">
-              TWIN. <br />
-              <span className="text-sky-400">The Parallel World for Precision Marketing.</span>
+              The Parallel World <br />
+              <span className="text-sky-400">for Precision Marketing.</span>
             </h1>
             <p className="text-lg text-slate-400 mb-8 leading-relaxed">
               Twin is a strategic data asset of 330 million synthetic agents—statistically matched to the US population, but born from code, not surveillance. We calculate the "Hidden Variables" the census misses to give you joint probability precision with zero privacy risk.
