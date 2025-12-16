@@ -136,7 +136,7 @@ const TrustAnchor = () => {
       <div className="max-w-7xl mx-auto px-4 text-center">
         <h2 className="text-2xl font-bold text-white mb-4">
           Born from <span className="text-indigo-400">Harvard Research</span>.<br />
-          Built using <span className="text-indigo-400">Harvard’s supercomputers</span>.
+          Built using <span className="text-sky-400">Harvard’s supercomputers</span>.
         </h2>
         <p className="text-slate-400 max-w-3xl mx-auto mb-8 leading-relaxed">
           The Twin architecture was engineered at Harvard University and created over 2 years using Harvard’s high-performance computing clusters. We utilize real data from multiple datasets to reconstruct the U.S. population at a depth that has never been done before. The patterns are real; the people don’t actually exist. You get the mathematical precision of actual data with zero privacy risk.
