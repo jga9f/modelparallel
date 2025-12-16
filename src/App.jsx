@@ -196,7 +196,7 @@ const LogicSection = () => {
 
         <div className="flex flex-col gap-8">
           {/* 01 WARNING - Full Width */}
-          <div className="bg-slate-900 rounded-2xl p-8 border border-white/5 hover:border-indigo-500/30 transition-all relative overflow-hidden">
+          <div className="bg-gradient-to-br from-indigo-900/20 via-slate-900 to-slate-900 rounded-2xl p-8 border border-indigo-500/30 hover:border-indigo-500/50 transition-all relative overflow-hidden shadow-[0_0_40px_rgba(79,70,229,0.1)]">
             <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
               <AlertTriangle size={200} />
             </div>
