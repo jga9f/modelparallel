@@ -202,9 +202,8 @@ const LogicSection = () => {
             </div>
             <div className="relative z-10 grid md:grid-cols-12 gap-8 items-start">
               <div className="md:col-span-4">
-                <div className="text-indigo-500 font-mono text-sm mb-4">01 // THE WARNING</div>
-                <h3 className="text-2xl font-bold text-white mb-4">The Probability Trap</h3>
-                <p className="text-slate-300 italic mb-4">"Are you making the '70% Mistake'?"</p>
+                <div className="text-indigo-500 font-mono text-sm mb-4">01 // The Opportunity</div>
+                <h3 className="text-2xl font-bold text-white mb-4">Who are you missing?</h3>
               </div>
               <div className="md:col-span-8 space-y-4 text-sm text-slate-300">
                 <p>
