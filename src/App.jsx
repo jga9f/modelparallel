@@ -520,8 +520,8 @@ const GridCaseStudies = () => {
     <div className="py-24 bg-slate-950 border-t border-slate-800" id="case-studies">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-white mb-4">Strategic <span className="text-sky-400">Impact</span></h2>
-          <p className="text-slate-400">Validated results from the Twin engine.</p>
+          <h2 className="text-3xl font-bold text-white mb-4">Case <span className="text-sky-400">Studies</span></h2>
+          <p className="text-slate-400">See how Companies are Using Twin</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
