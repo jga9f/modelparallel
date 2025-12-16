@@ -568,7 +568,7 @@ const SignalBuilder = () => {
               <div className="absolute top-0 inset-x-0 z-20 pt-8 flex flex-col items-center justify-center text-center">
                 <div className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-2">Total Twin Population</div>
                 <div className="text-5xl lg:text-6xl font-mono font-bold text-white tracking-tighter">
-                  2,368,347
+                  830,661
                 </div>
                 <div className="text-indigo-400 text-sm font-bold mt-2">Identified in Market</div>
               </div>
