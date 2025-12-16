@@ -109,7 +109,7 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <button className="flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-400 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(79,70,229,0.4)] hover:shadow-[0_0_30px_rgba(79,70,229,0.6)]">
-                Request Demo <ChevronRight size={20} />
+                Find Your Twins <ChevronRight size={20} />
               </button>
             </div>
           </div>
@@ -397,9 +397,9 @@ const SignalBuilder = () => {
                         <button
                           key={item}
                           onClick={() => toggleItem(baseDemo, setBaseDemo, item)}
-                          className={`px - 3 py - 1.5 rounded text - xs font - bold border transition - all ${baseDemo.includes(item)
-                            ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
-                            : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
+                          className={`px-4 py-2 rounded-md text-xs font-bold border shadow-sm transition-all ${baseDemo.includes(item)
+                            ? 'bg-indigo-600 border-indigo-500 text-white shadow-indigo-500/20'
+                            : 'bg-slate-800 border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500'
                             } `}
                         >
                           {item}
@@ -418,9 +418,9 @@ const SignalBuilder = () => {
                         <button
                           key={item}
                           onClick={() => toggleItem(baseHousing, setBaseHousing, item)}
-                          className={`px - 3 py - 1.5 rounded text - xs font - bold border transition - all ${baseHousing.includes(item)
-                            ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
-                            : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
+                          className={`px-4 py-2 rounded-md text-xs font-bold border shadow-sm transition-all ${baseHousing.includes(item)
+                            ? 'bg-indigo-600 border-indigo-500 text-white shadow-indigo-500/20'
+                            : 'bg-slate-800 border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500'
                             } `}
                         >
                           {item}
@@ -462,9 +462,9 @@ const SignalBuilder = () => {
                                 <button
                                   key={sub}
                                   onClick={() => toggleItem(insuranceVars, setInsuranceVars, sub)}
-                                  className={`flex items - center gap - 2 px - 3 py - 2 rounded text - xs font - bold border transition - all w - full md: w - auto ${insuranceVars.includes(sub)
-                                    ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
-                                    : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-600'
+                                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-xs font-bold border shadow-sm transition-all w-full md:w-auto ${insuranceVars.includes(sub)
+                                    ? 'bg-indigo-600 border-indigo-500 text-white shadow-indigo-500/20'
+                                    : 'bg-slate-800 border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500'
                                     } `}
                                 >
                                   {insuranceVars.includes(sub) ? <CheckCircle2 size={14} className="text-indigo-400" /> : <div className="w-3.5 h-3.5 rounded-full border border-slate-600"></div>}
