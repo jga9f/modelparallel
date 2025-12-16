@@ -11,7 +11,7 @@ import {
 // --- Constants & Data ---
 
 // Rebrand: Swapped Video for Map Screenshot
-const HERO_VISUAL = "/Twin1.png";
+const HERO_VISUAL = "/Twin NYC.png";
 
 const CASE_STUDIES = [
   {
@@ -122,12 +122,6 @@ const HeroSection = () => {
                 className="w-full h-full object-cover opacity-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/10"></div>
-
-              <div className="absolute inset-0 p-8 z-10 pointer-events-none">
-                <div className="absolute top-4 right-4 text-xs font-mono text-indigo-400 bg-slate-950/80 backdrop-blur px-3 py-1 rounded border border-indigo-500/30">
-                  AGENTS_ACTIVE: 331,449,281
-                </div>
-              </div>
             </div>
           </div>
         </div>
