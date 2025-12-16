@@ -488,7 +488,7 @@ const SignalBuilder = () => {
 
                 {/* 4. SPATIAL OVERLAY BLOCK */}
                 <div className="space-y-3">
-                  <div className="text-sm text-emerald-500 uppercase tracking-wider font-bold font-mono"> // 4. ADD SPATIAL OVERLAY</div>
+                  <div className="text-sm text-teal-500 uppercase tracking-wider font-bold font-mono"> // 4. ADD SPATIAL OVERLAY</div>
                   <div className="p-5 rounded-lg border border-dashed border-slate-600 bg-slate-950/50">
                     <div className="grid grid-cols-1 gap-3">
                       {SPATIAL_PACKS.map((pack) => (
@@ -496,33 +496,33 @@ const SignalBuilder = () => {
                           <button
                             onClick={() => setSelectedSpatialPack(selectedSpatialPack === pack.id ? null : pack.id)}
                             className={`w-full flex items-center justify-between p-4 rounded-lg border transition-all ${selectedSpatialPack === pack.id
-                              ? 'bg-slate-800 border-emerald-500'
+                              ? 'bg-slate-800 border-teal-500'
                               : 'bg-slate-900 border-slate-700 hover:border-slate-600'
                               } `}
                           >
                             <div className="flex items-center gap-3">
-                              <div className={`p-2 rounded ${selectedSpatialPack === pack.id ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-800 text-slate-500'} `}>
+                              <div className={`p-2 rounded ${selectedSpatialPack === pack.id ? 'bg-teal-500/20 text-teal-400' : 'bg-slate-800 text-slate-500'} `}>
                                 {pack.icon && <pack.icon size={18} />}
                               </div>
-                              <span className={`font-bold ${selectedSpatialPack === pack.id ? 'text-white' : 'text-slate-300'} `}>{pack.name}</span>
+                              <span className={`font - bold ${selectedSpatialPack === pack.id ? 'text-white' : 'text-slate-300'} `}>{pack.name}</span>
                             </div>
-                            <ChevronDown size={18} className={`transition-transform ${selectedSpatialPack === pack.id ? 'rotate-180 text-emerald-400' : 'text-slate-600'} `} />
+                            <ChevronDown size={18} className={`transition - transform ${selectedSpatialPack === pack.id ? 'rotate-180 text-teal-400' : 'text-slate-600'} `} />
                           </button>
 
                           {/* EXPANDED CONTENT */}
                           {(selectedSpatialPack === pack.id && pack.id === 'Retail') && (
-                            <div className="mt-2 ml-2 pl-4 border-l-2 border-emerald-500/20 py-2 space-y-2">
+                            <div className="mt-2 ml-2 pl-4 border-l-2 border-teal-500/20 py-2 space-y-2">
                               <div className="flex flex-wrap gap-2">
                                 {['Hardware Stores', 'Grocery Stores', 'Pharmacies', 'QSR'].map(sub => (
                                   <button
                                     key={sub}
                                     onClick={() => toggleItem(spatialVars, setSpatialVars, sub)}
-                                    className={`flex items-center gap-2 px-3 py-2 rounded-md text-xs font-bold border shadow-sm transition-all w-full md:w-auto ${spatialVars.includes(sub)
-                                      ? 'bg-emerald-600 border-emerald-500 text-white shadow-emerald-500/20'
+                                    className={`flex items - center gap - 2 px - 3 py - 2 rounded - md text - xs font - bold border shadow - sm transition - all w - full md: w - auto ${spatialVars.includes(sub)
+                                      ? 'bg-teal-600 border-teal-500 text-white shadow-teal-500/20'
                                       : 'bg-slate-800 border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500'
                                       } `}
                                   >
-                                    {spatialVars.includes(sub) ? <CheckCircle2 size={14} className="text-emerald-400" /> : <div className="w-3.5 h-3.5 rounded-full border border-slate-600"></div>}
+                                    {spatialVars.includes(sub) ? <CheckCircle2 size={14} className="text-teal-400" /> : <div className="w-3.5 h-3.5 rounded-full border border-slate-600"></div>}
                                     {sub}
                                   </button>
                                 ))}
@@ -531,18 +531,18 @@ const SignalBuilder = () => {
                           )}
 
                           {(selectedSpatialPack === pack.id && pack.id === 'Environment') && (
-                            <div className="mt-2 ml-2 pl-4 border-l-2 border-emerald-500/20 py-2 space-y-2">
+                            <div className="mt-2 ml-2 pl-4 border-l-2 border-teal-500/20 py-2 space-y-2">
                               <div className="flex flex-wrap gap-2">
                                 {['Flood Zones (FEMA)', 'Fire Severity', 'Urban Heat Islands', 'Air Quality Index'].map(sub => (
                                   <button
                                     key={sub}
                                     onClick={() => toggleItem(spatialVars, setSpatialVars, sub)}
-                                    className={`flex items-center gap-2 px-3 py-2 rounded-md text-xs font-bold border shadow-sm transition-all w-full md:w-auto ${spatialVars.includes(sub)
-                                      ? 'bg-emerald-600 border-emerald-500 text-white shadow-emerald-500/20'
+                                    className={`flex items - center gap - 2 px - 3 py - 2 rounded - md text - xs font - bold border shadow - sm transition - all w - full md: w - auto ${spatialVars.includes(sub)
+                                      ? 'bg-teal-600 border-teal-500 text-white shadow-teal-500/20'
                                       : 'bg-slate-800 border-slate-600 text-slate-300 hover:bg-slate-700 hover:border-slate-500'
                                       } `}
                                   >
-                                    {spatialVars.includes(sub) ? <CheckCircle2 size={14} className="text-emerald-400" /> : <div className="w-3.5 h-3.5 rounded-full border border-slate-600"></div>}
+                                    {spatialVars.includes(sub) ? <CheckCircle2 size={14} className="text-teal-400" /> : <div className="w-3.5 h-3.5 rounded-full border border-slate-600"></div>}
                                     {sub}
                                   </button>
                                 ))}
@@ -608,7 +608,6 @@ const GridCaseStudies = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-white mb-4">Case <span className="text-sky-400">Studies</span></h2>
-          <p className="text-slate-400">See how Companies are Using Twin</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
