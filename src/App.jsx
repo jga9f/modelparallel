@@ -564,8 +564,8 @@ const SignalBuilder = () => {
             <div className="bg-slate-950 rounded-2xl border border-slate-800 p-8 shadow-2xl relative overflow-hidden h-[800px] flex flex-col">
               <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 to-transparent pointer-events-none"></div>
 
-              {/* STATIC Stats Header */}
-              <div className="flex flex-col items-center justify-center text-center mb-8 relative z-10 pt-4">
+              {/* STATIC Stats Header - Keeping it overlayed or at top? Let's keep it at top z-20 */}
+              <div className="absolute top-0 inset-x-0 z-20 pt-8 flex flex-col items-center justify-center text-center">
                 <div className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-2">Total Twin Population</div>
                 <div className="text-5xl lg:text-6xl font-mono font-bold text-white tracking-tighter">
                   2,368,347
@@ -573,14 +573,25 @@ const SignalBuilder = () => {
                 <div className="text-indigo-400 text-sm font-bold mt-2">Identified in Market</div>
               </div>
 
-              {/* VISUAL IMAGE PLACEHOLDER */}
-              <div className="flex-1 relative flex items-center justify-center bg-slate-900/50 rounded-lg border-2 border-dashed border-slate-800 overflow-hidden mb-6 mx-4">
-                <img
-                  src="/Twin2.png"
-                  alt="Population Map"
-                  className="w-full h-full object-contain opacity-80"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none"></div>
+              {/* DUAL IMAGE STACK */}
+              <div className="absolute inset-0 flex flex-col pt-32 pb-4 px-4 gap-4">
+                {/* Top: Flat View */}
+                <div className="flex-1 relative rounded-lg border-2 border-dashed border-slate-800 bg-slate-900/50 overflow-hidden">
+                  <img
+                    src="/Twin NYC flat.png"
+                    alt="Twin Flat Map"
+                    className="w-full h-full object-cover opacity-80"
+                  />
+                </div>
+
+                {/* Bottom: Perspective View */}
+                <div className="flex-1 relative rounded-lg border-2 border-dashed border-slate-800 bg-slate-900/50 overflow-hidden">
+                  <img
+                    src="/Twin NYC.png"
+                    alt="Twin Perspective Map"
+                    className="w-full h-full object-cover opacity-80"
+                  />
+                </div>
               </div>
 
             </div>
