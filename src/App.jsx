@@ -70,7 +70,7 @@ const Navigation = () => {
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 relative overflow-hidden rounded">
               <img
-                src="/logo.png"
+                src="/logo.png" // Reverted to logo.png
                 alt="Twin Logo"
                 className="object-contain h-full w-full"
               />
