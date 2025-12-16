@@ -119,7 +119,7 @@ const HeroSection = () => {
               <img
                 src={HERO_VISUAL}
                 alt="Parallel Synthetic Map"
-                className="w-full h-full object-cover opacity-90"
+                className="w-full h-full object-contain opacity-90"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/10"></div>
             </div>
