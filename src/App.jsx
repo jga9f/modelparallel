@@ -218,9 +218,7 @@ const LogicSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Find Missing Markets. <span className="text-indigo-400">Scale Winning Strategies.</span></h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            From raw data to high-resolution density.
-          </p>
+
         </div>
 
         <div className="flex flex-col gap-8">
@@ -252,7 +250,7 @@ const LogicSection = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <FeatureCard
               number={2}
-              title="The Targeting"
+              title="Precision Marketing"
               icon={Search}
               problem="You have a profile. Now find the people."
               solution="You are stuck targeting basic census buckets like 'Age' and 'Income.' Twin lets you target the Hidden Variables: Insurance coverage, job type, home appliances, commute times, and housing tenure."
@@ -260,7 +258,7 @@ const LogicSection = () => {
             />
             <FeatureCard
               number={3}
-              title="The Expansion"
+              title="Find New Markets"
               icon={Map}
               problem="Find your best customers. Then find their Twins."
               solution="You know you are winning in a specific region (e.g., Boston). Twin analyzes the statistical DNA of that successful market and instantly scans the entire US map to find the Mathematical Look-a-likes you are ignoring."
@@ -268,7 +266,7 @@ const LogicSection = () => {
             />
             <FeatureCard
               number={4}
-              title="The Enrichment"
+              title="Know Your Customers Better"
               icon={Database}
               problem="Know them without tracking them."
               solution="You have sales data, but privacy laws prevent you from knowing the full context of your customers' lives. By overlaying your sales data onto the Twin synthetic fabric, we can tell you more about your customers than you thought possible."
@@ -398,8 +396,8 @@ const SignalBuilder = () => {
                         key={r}
                         onClick={() => setRegion(r)}
                         className={`py - 2 px - 3 rounded text - sm font - bold transition - all border ${region === r
-                            ? 'bg-sky-500 text-slate-900 border-sky-500'
-                            : 'bg-slate-900 text-slate-400 border-slate-700 hover:border-slate-500'
+                          ? 'bg-sky-500 text-slate-900 border-sky-500'
+                          : 'bg-slate-900 text-slate-400 border-slate-700 hover:border-slate-500'
                           } `}
                       >
                         {r}
@@ -428,8 +426,8 @@ const SignalBuilder = () => {
                           key={item}
                           onClick={() => toggleItem(baseDemo, setBaseDemo, item)}
                           className={`px - 3 py - 1.5 rounded text - xs font - bold border transition - all ${baseDemo.includes(item)
-                              ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
-                              : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
+                            ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
+                            : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
                             } `}
                         >
                           {item}
@@ -449,8 +447,8 @@ const SignalBuilder = () => {
                           key={item}
                           onClick={() => toggleItem(baseHousing, setBaseHousing, item)}
                           className={`px - 3 py - 1.5 rounded text - xs font - bold border transition - all ${baseHousing.includes(item)
-                              ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
-                              : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
+                            ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
+                            : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
                             } `}
                         >
                           {item}
@@ -471,8 +469,8 @@ const SignalBuilder = () => {
                         <button
                           onClick={() => setSelectedPack(selectedPack === pack.id ? null : pack.id)}
                           className={`w - full flex items - center justify - between p - 4 rounded - lg border transition - all ${selectedPack === pack.id
-                              ? 'bg-slate-800 border-indigo-500'
-                              : 'bg-slate-900 border-slate-700 hover:border-slate-600'
+                            ? 'bg-slate-800 border-indigo-500'
+                            : 'bg-slate-900 border-slate-700 hover:border-slate-600'
                             } `}
                         >
                           <div className="flex items-center gap-3">
@@ -493,8 +491,8 @@ const SignalBuilder = () => {
                                   key={sub}
                                   onClick={() => toggleItem(insuranceVars, setInsuranceVars, sub)}
                                   className={`flex items - center gap - 2 px - 3 py - 2 rounded text - xs font - bold border transition - all w - full md: w - auto ${insuranceVars.includes(sub)
-                                      ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
-                                      : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-600'
+                                    ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
+                                    : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-600'
                                     } `}
                                 >
                                   {insuranceVars.includes(sub) ? <CheckCircle2 size={14} className="text-indigo-400" /> : <div className="w-3.5 h-3.5 rounded-full border border-slate-600"></div>}
@@ -608,11 +606,11 @@ const Footer = () => {
     <footer className="bg-slate-950 border-t border-white/10 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-          The market is invisible to standard data.<br />
-          <span className="text-indigo-400">Parallel makes it visible.</span>
+          Your next 100,000 customers are<br />
+          <span className="text-indigo-400">hiding in plain sight.</span>
         </h2>
         <button className="bg-indigo-500 hover:bg-indigo-400 text-white px-10 py-5 rounded-full font-bold text-xl transition-all shadow-[0_0_20px_rgba(79,70,229,0.4)] hover:shadow-[0_0_40px_rgba(79,70,229,0.6)] mb-16">
-          Enter the Parallel World
+          Find Your Twins
         </button>
 
         <div className="flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm border-t border-white/5 pt-8">
