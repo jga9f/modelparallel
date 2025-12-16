@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import {
   Users, Search, Map, Shield, ChevronRight, BarChart3,
   Zap, Lock, Menu, X, CheckCircle2, Globe, Building2,
   MapPin, Car, Wifi, Wallet, Heart, Briefcase, GraduationCap,
-  Plane, Smartphone, Leaf, ChevronDown, Radio, Home, Key, Clock, Languages, Image as ImageIcon
+  Plane, Smartphone, Leaf, ChevronDown, Radio, Home, Key, Clock, Languages, Image as ImageIcon,
+  AlertTriangle, Database
 } from 'lucide-react';
 
 // --- Constants & Data ---
@@ -166,10 +168,10 @@ const TrustAnchor = () => {
     <div className="py-12 bg-slate-950 border-y border-white/5 relative z-20">
       <div className="max-w-7xl mx-auto px-4 text-center">
         <h2 className="text-2xl font-bold text-white mb-4">
-          Born from <span className="text-indigo-400">Harvard Research</span>. Enterprise Scale.
+          Born from <span className="text-indigo-400">Harvard Research</span>. Built using <span className="text-indigo-400">Harvard’s supercomputers</span>.
         </h2>
         <p className="text-slate-400 max-w-3xl mx-auto mb-8 leading-relaxed">
-          Built on architecture developed at Harvard University’s supercomputing clusters. We model 330 million synthetic agents—statistically identical to the US population, but born from code, not surveillance.
+          The Twin architecture was engineered at Harvard University and created over 2 years using Harvard’s high-performance computing clusters. We utilize real data from multiple incongruent datasets to reconstruct the U.S. population at a depth that has never been done before. The patterns are real; the people don’t actually exist. You get the mathematical precision of actual data with zero privacy risk.
         </p>
 
         <div className="flex flex-wrap justify-center gap-8 text-sm text-slate-500 uppercase tracking-widest font-bold">
@@ -215,37 +217,64 @@ const LogicSection = () => {
     <div className="py-24 bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">The <span className="text-indigo-400">Parallel</span> Engine</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Find Missing Markets. <span className="text-indigo-400">Scale Winning Strategies.</span></h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
             From raw data to high-resolution density.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <FeatureCard
-            number={1}
-            title="Signal Extraction"
-            icon={Search}
-            problem="We need to find the behavioral DNA that drives purchase."
-            solution="We ingest your customer data to isolate 'Hidden Signals'—the behavioral DNA that drives purchase, beyond basic demographics."
-            result="Identify the core behavioral pattern."
-          />
-          <FeatureCard
-            number={2}
-            title="Parallel Projection"
-            icon={Users}
-            problem="Who else matches this exact DNA?"
-            solution="We project those signals onto our synthetic US population to identify every agent who shares that behavioral DNA."
-            result="A complete cohort of lookalike agents."
-          />
-          <FeatureCard
-            number={3}
-            title="High-Resolution Density"
-            icon={Map}
-            problem="Where are they located?"
-            solution="We map the density of these agents down to the block level. Prove that Nashville has higher conversion potential than Austin."
-            result="Precise geographic targeting."
-          />
+        <div className="flex flex-col gap-8">
+          {/* 01 WARNING - Full Width */}
+          <div className="bg-slate-900 rounded-2xl p-8 border border-white/5 hover:border-indigo-500/30 transition-all relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+              <AlertTriangle size={200} />
+            </div>
+            <div className="relative z-10 grid md:grid-cols-12 gap-8 items-start">
+              <div className="md:col-span-4">
+                <div className="text-indigo-500 font-mono text-sm mb-4">01 // THE WARNING</div>
+                <h3 className="text-2xl font-bold text-white mb-4">The Probability Trap</h3>
+                <p className="text-slate-300 italic mb-4">"Are you making the '70% Mistake'?"</p>
+              </div>
+              <div className="md:col-span-8 space-y-4 text-sm text-slate-300">
+                <p>
+                  We originally built this engine to solve a public health crisis: Lead Poisoning. Standard data assumed that <span className="text-white font-mono bg-slate-800 px-1 rounded">[Old Homes] + [Young Kids] = Risk</span>. It seems intuitive, but it was wrong.
+                </p>
+                <div className="pl-4 border-l-2 border-indigo-500/50">
+                  <p>
+                    By using Twin’s joint probabilities—accounting for who actually lives in those homes—we found that the standard method missed 70% of high-risk neighborhoods. If simple assumptions failed for public health, where are they failing your marketing strategy?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Grid for 02, 03, 04 */}
+          <div className="grid md:grid-cols-3 gap-8">
+            <FeatureCard
+              number={2}
+              title="The Targeting"
+              icon={Search}
+              problem="You have a profile. Now find the people."
+              solution="You are stuck targeting basic census buckets like 'Age' and 'Income.' Twin lets you target the Hidden Variables: Insurance coverage, job type, home appliances, commute times, and housing tenure."
+              result="Don't just target '35-year-olds.' Target '35-year-old homeowners with a 45-minute commute and a specific water heater.' Precision marketing, zero privacy risk."
+            />
+            <FeatureCard
+              number={3}
+              title="The Expansion"
+              icon={Map}
+              problem="Find your best customers. Then find their Twins."
+              solution="You know you are winning in a specific region (e.g., Boston). Twin analyzes the statistical DNA of that successful market and instantly scans the entire US map to find the Mathematical Look-a-likes you are ignoring."
+              result="Don't guess where to expand next. Let the data dictate the destination."
+            />
+            <FeatureCard
+              number={4}
+              title="The Enrichment"
+              icon={Database}
+              problem="Know them without tracking them."
+              solution="You have sales data, but privacy laws prevent you from knowing the full context of your customers' lives. By overlaying your sales data onto the Twin synthetic fabric, we can tell you more about your customers than you thought possible."
+              result="Predicting their lifestyle, housing risks, and purchasing constraints—without ever touching PII."
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -368,10 +397,10 @@ const SignalBuilder = () => {
                       <button
                         key={r}
                         onClick={() => setRegion(r)}
-                        className={`py-2 px-3 rounded text-sm font-bold transition-all border ${region === r
-                          ? 'bg-sky-500 text-slate-900 border-sky-500'
-                          : 'bg-slate-900 text-slate-400 border-slate-700 hover:border-slate-500'
-                          }`}
+                        className={`py - 2 px - 3 rounded text - sm font - bold transition - all border ${region === r
+                            ? 'bg-sky-500 text-slate-900 border-sky-500'
+                            : 'bg-slate-900 text-slate-400 border-slate-700 hover:border-slate-500'
+                          } `}
                       >
                         {r}
                       </button>
@@ -398,10 +427,10 @@ const SignalBuilder = () => {
                         <button
                           key={item}
                           onClick={() => toggleItem(baseDemo, setBaseDemo, item)}
-                          className={`px-3 py-1.5 rounded text-xs font-bold border transition-all ${baseDemo.includes(item)
-                            ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
-                            : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
-                            }`}
+                          className={`px - 3 py - 1.5 rounded text - xs font - bold border transition - all ${baseDemo.includes(item)
+                              ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
+                              : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
+                            } `}
                         >
                           {item}
                         </button>
@@ -419,10 +448,10 @@ const SignalBuilder = () => {
                         <button
                           key={item}
                           onClick={() => toggleItem(baseHousing, setBaseHousing, item)}
-                          className={`px-3 py-1.5 rounded text-xs font-bold border transition-all ${baseHousing.includes(item)
-                            ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
-                            : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
-                            }`}
+                          className={`px - 3 py - 1.5 rounded text - xs font - bold border transition - all ${baseHousing.includes(item)
+                              ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
+                              : 'bg-slate-900/50 border-slate-700 text-slate-500 hover:border-slate-600'
+                            } `}
                         >
                           {item}
                         </button>
@@ -441,18 +470,18 @@ const SignalBuilder = () => {
                       <div key={pack.id} className="w-full">
                         <button
                           onClick={() => setSelectedPack(selectedPack === pack.id ? null : pack.id)}
-                          className={`w-full flex items-center justify-between p-4 rounded-lg border transition-all ${selectedPack === pack.id
-                            ? 'bg-slate-800 border-indigo-500'
-                            : 'bg-slate-900 border-slate-700 hover:border-slate-600'
-                            }`}
+                          className={`w - full flex items - center justify - between p - 4 rounded - lg border transition - all ${selectedPack === pack.id
+                              ? 'bg-slate-800 border-indigo-500'
+                              : 'bg-slate-900 border-slate-700 hover:border-slate-600'
+                            } `}
                         >
                           <div className="flex items-center gap-3">
-                            <div className={`p-2 rounded ${selectedPack === pack.id ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-800 text-slate-500'}`}>
+                            <div className={`p - 2 rounded ${selectedPack === pack.id ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-800 text-slate-500'} `}>
                               {pack.icon && <pack.icon size={18} />}
                             </div>
-                            <span className={`font-bold ${selectedPack === pack.id ? 'text-white' : 'text-slate-300'}`}>{pack.name}</span>
+                            <span className={`font - bold ${selectedPack === pack.id ? 'text-white' : 'text-slate-300'} `}>{pack.name}</span>
                           </div>
-                          <ChevronDown size={18} className={`transition-transform ${selectedPack === pack.id ? 'rotate-180 text-indigo-400' : 'text-slate-600'}`} />
+                          <ChevronDown size={18} className={`transition - transform ${selectedPack === pack.id ? 'rotate-180 text-indigo-400' : 'text-slate-600'} `} />
                         </button>
 
                         {/* EXPANDED CONTENT (Sub-variables as Buttons) */}
@@ -463,10 +492,10 @@ const SignalBuilder = () => {
                                 <button
                                   key={sub}
                                   onClick={() => toggleItem(insuranceVars, setInsuranceVars, sub)}
-                                  className={`flex items-center gap-2 px-3 py-2 rounded text-xs font-bold border transition-all w-full md:w-auto ${insuranceVars.includes(sub)
-                                    ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
-                                    : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-600'
-                                    }`}
+                                  className={`flex items - center gap - 2 px - 3 py - 2 rounded text - xs font - bold border transition - all w - full md: w - auto ${insuranceVars.includes(sub)
+                                      ? 'bg-indigo-500/20 border-indigo-500 text-indigo-300'
+                                      : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-600'
+                                    } `}
                                 >
                                   {insuranceVars.includes(sub) ? <CheckCircle2 size={14} className="text-indigo-400" /> : <div className="w-3.5 h-3.5 rounded-full border border-slate-600"></div>}
                                   {sub}
