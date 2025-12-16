@@ -238,7 +238,7 @@ const LogicSection = () => {
             />
             <FeatureCard
               number={4}
-              title="Know Your Customers Better"
+              title="Know your customers in a way that wasn't possible before"
               icon={Database}
               problem="Know them without tracking them."
               solution="You have sales data, but privacy laws prevent you from knowing the full context of your customers' lives. By overlaying your sales data onto the Twin synthetic fabric, we can tell you more about your customers than you thought possible."
