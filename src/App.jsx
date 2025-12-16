@@ -33,24 +33,6 @@ const CASE_STUDIES = [
     tags: ["Pharma", "Privacy"]
   },
   {
-    id: 3,
-    type: "Public Health",
-    title: "Public Health Precision",
-    metric: "70% Risk Risk Found",
-    challenge: "Standard data assumes [Many Kids] + [Many Old Homes] = Risk. This 'Naïve' approach missed 70% of high-risk children.",
-    solution: "Parallel modeled the intersection of housing age and family composition to pinpoint risk without PII.",
-    tags: ["Origin Story", "Public Health"]
-  },
-  {
-    id: 4,
-    type: "Insurance Risk",
-    title: "The Probability Trap",
-    metric: "+40% Accuracy",
-    challenge: "Insurer targeting anti-smoking campaigns used 'Naïve' census data, missing the true intersection of risk factors.",
-    solution: "Parallel calculated joint probabilities of risk at the individual level. We found the status quo missed 40% of true high-risk census tracts.",
-    tags: ["Insurance", "Predictive"]
-  },
-  {
     id: 5,
     type: "Hardware Sales",
     title: "The Resolution Gap",
@@ -58,15 +40,6 @@ const CASE_STUDIES = [
     challenge: "A smoke alarm giant needed to identify fire risk, but standard housing data lacked the necessary spatial resolution.",
     solution: "We brought in individual housing risk factors—specifically Space Heater usage—to pinpoint high-risk homes the spatial data missed.",
     tags: ["Hardware", "Risk"]
-  },
-  {
-    id: 6,
-    type: "Energy Optimization",
-    title: "Grid Load Forecasting",
-    metric: "Peak Precision",
-    challenge: "Utility providers struggled to predict EV charging loads at the block level using standard consumption averages.",
-    solution: "Twin simulated individual EV ownership probability and charging behaviors, enabling precise transformer load management.",
-    tags: ["Energy", "Infrastructure"]
   }
 ];
 
@@ -390,8 +363,8 @@ const SignalBuilder = () => {
               <div className="space-y-3">
                 <div className="text-sm text-sky-500 uppercase tracking-wider font-bold font-mono"> // 1. SELECT GEOGRAPHY</div>
                 <div className="p-5 rounded-lg border border-slate-700 bg-slate-800/30">
-                  <div className="grid grid-cols-3 gap-3">
-                    {['State', 'Region', 'National'].map((r) => (
+                  <div className="grid grid-cols-4 gap-3">
+                    {['State', 'Region', 'DMA', 'National'].map((r) => (
                       <button
                         key={r}
                         onClick={() => setRegion(r)}
