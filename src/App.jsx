@@ -323,8 +323,8 @@ const SignalBuilder = () => {
   // State for base variables to allow toggling (defaulting all to true for "included" feel, or false? 
   // User said "let the user select... as many or few". I will default to all selected to match "included" vibe, or maybe just a few.
   // Let's use simple arrays for selection state for simplicity in this demo.
-  const [baseDemo, setBaseDemo] = useState(['Age', 'Gender', 'Race/Ethnicity', 'Income']);
-  const [baseHousing, setBaseHousing] = useState(['Type', 'Age of Home', 'Tenure']);
+  const [baseDemo, setBaseDemo] = useState(['Age', 'Sex', 'Race', 'Ethnicity', 'Income']);
+  const [baseHousing, setBaseHousing] = useState(['Household Size', 'Household Tenure', 'Building Type', 'Construction Age', 'Heating Fuel']);
   const [insuranceVars, setInsuranceVars] = useState(['Health (Private, Medicare, Medicaid)', 'Fire Insurance', 'Flood Insurance']);
 
   const toggleItem = (list, setList, item) => {
@@ -334,10 +334,10 @@ const SignalBuilder = () => {
 
   const VARIABLE_PACKS = [
     { id: 'Insurance', name: 'Insurance', icon: Shield },
-    { id: 'Energy', name: 'Energy', icon: Zap },
     { id: 'Family', name: 'Family & Life', icon: Users },
+    { id: 'Support', name: 'Support', icon: Heart },
     { id: 'Work', name: 'Work & Transit', icon: Briefcase },
-    { id: 'Building', name: 'Building & Appliances', icon: Building2 }
+    { id: 'Housing', name: 'Housing', icon: Building2 }
   ];
 
   const SPATIAL_PACKS = [
@@ -400,7 +400,7 @@ const SignalBuilder = () => {
                       <Users size={16} className="text-slate-400" /> Demographics
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {['Age', 'Gender', 'Race/Ethnicity', 'Income'].map(item => (
+                      {['Age', 'Sex', 'Race', 'Ethnicity', 'Income'].map(item => (
                         <button
                           key={item}
                           onClick={() => toggleItem(baseDemo, setBaseDemo, item)}
@@ -421,7 +421,7 @@ const SignalBuilder = () => {
                       <Home size={16} className="text-slate-400" /> Housing Characteristics
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {['Type', 'Age of Home', 'Tenure'].map(item => (
+                      {['Household Size', 'Household Tenure', 'Building Type', 'Construction Age', 'Heating Fuel'].map(item => (
                         <button
                           key={item}
                           onClick={() => toggleItem(baseHousing, setBaseHousing, item)}
