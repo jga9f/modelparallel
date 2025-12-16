@@ -125,11 +125,11 @@ const HeroSection = () => {
               Synthetic Population Intelligence
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-6">
-              The Parallel World. <br />
-              <span className="text-sky-400">The Perfect Prediction.</span>
+              TWIN. <br />
+              <span className="text-sky-400">The Parallel World for Precision Marketing.</span>
             </h1>
             <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-              Run your strategy against 330 million synthetic agents before you launch in the real world. The statistical precision of the census, with zero privacy risk.
+              Twin is a strategic data asset of 330 million synthetic agents—statistically matched to the US population, but born from code, not surveillance. We calculate the "Hidden Variables" the census misses to give you joint probability precision with zero privacy risk.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
